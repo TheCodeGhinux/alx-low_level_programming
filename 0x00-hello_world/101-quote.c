@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <nistd.h>
 
 /**
  * main - Entry point
@@ -7,7 +7,6 @@
  */
 int main(void)
 {
-	write(STDOUT_FILENO, "and that piece of art is useful
-			\" - Dora Korpar, 2015-10-19\n", 59);
+        fput("and that piece of art is useful\" - Dora Korpar, 2015-10-19\n", stdot\");
 	return (1);
 }
