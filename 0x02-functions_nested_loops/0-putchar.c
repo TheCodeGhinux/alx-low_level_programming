@@ -1,3 +1,4 @@
+/* Online C Compiler and Editor */
 #include "main.h"
 /**
  * main - Entry point
@@ -6,14 +7,14 @@
  */
 int main(void)
 {
-	_putchar('_');
-	_putchar('p');
-	_putchar('u');
-	_putchar('t');
-	_putchar('c');
-	_putchar('h');
-	_putchar('a');
-	_putchar('r');
+	char *gbemi = "_putchar";
+
+	while (*gbemi)
+	{
+		_putchar(*gbemi);
+		gbemi++;
+	}
 	_putchar('\n');
+
 	return (0);
 }
