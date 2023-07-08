@@ -1,3 +1,8 @@
+/*
+ * File: 100-sorted_hash_table.c
+ * Auth: Brennan D Baraban
+ */
+
 #include "hash_tables.h"
 
 shash_table_t *shash_table_create(unsigned long int size);
@@ -17,7 +22,7 @@ void shash_table_delete(shash_table_t *ht);
 shash_table_t *shash_table_create(unsigned long int size)
 {
 	shash_table_t *ht;
-	unsigned long int a;
+	unsigned long int i;
 
 	ht = malloc(sizeof(shash_table_t));
 	if (ht == NULL)
@@ -27,8 +32,8 @@ shash_table_t *shash_table_create(unsigned long int size)
 	ht->array = malloc(sizeof(shash_node_t *) * size);
 	if (ht->array == NULL)
 		return (NULL);
-	for (i = 0; a < size; a++)
-		ht->array[a] = NULL;
+	for (i = 0; i < size; i++)
+		ht->array[i] = NULL;
 	ht->shead = NULL;
 	ht->stail = NULL;
 
@@ -48,7 +53,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	shash_node_t *new, *tmp;
 	char *value_copy;
-	unsigned long int y;
+	unsigned long int index;
 
 	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
 		return (0);
@@ -57,7 +62,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	if (value_copy == NULL)
 		return (0);
 
-	y = key_index((const unsigned char *)key, ht->size);
+	index = key_index((const unsigned char *)key, ht->size);
 	tmp = ht->shead;
 	while (tmp)
 	{
@@ -84,8 +89,8 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 	new->value = value_copy;
-	new->next = ht->array[y];
-	ht->array[y] = new;
+	new->next = ht->array[index];
+	ht->array[index] = new;
 
 	if (ht->shead == NULL)
 	{
@@ -130,13 +135,13 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
 	shash_node_t *node;
-	unsigned long int y;
+	unsigned long int index;
 
 	if (ht == NULL || key == NULL || *key == '\0')
 		return (NULL);
 
-	y = key_index((const unsigned char *)key, ht->size);
-	if (y >= ht->size)
+	index = key_index((const unsigned char *)key, ht->size);
+	if (index >= ht->size)
 		return (NULL);
 
 	node = ht->shead;
