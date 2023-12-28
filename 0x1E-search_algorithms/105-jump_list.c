@@ -9,7 +9,7 @@
  * @value: The value to search for.
  *
  * Return: A pointer to the first node where the value is located.
- *         Else, Null If the value is not present or 
+ *         Else, Null If the value is not present or
  *         the head of the list is NULL, NULL.
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
@@ -24,8 +24,7 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	jump = 0;
 	a = 0;
 
-	do
-	{
+	do {
 		node = list;
 		a++;
 		jump = a * b;
