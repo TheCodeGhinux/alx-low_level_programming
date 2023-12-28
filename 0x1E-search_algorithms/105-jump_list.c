@@ -14,41 +14,41 @@
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-  size_t jump, a, b;
-  listint_t *node;
+	size_t jump, a, b;
+	listint_t *node;
 
-  if (list == NULL || size == 0)
-    return (NULL);
+	if (list == NULL || size == 0)
+		return (NULL);
 
-  b = (size_t)sqrt((double)size);
-  jump = 0;
-  a = 0;
+	b = (size_t)sqrt((double)size);
+	jump = 0;
+	a = 0;
 
-  do
-  {
-    node = list;
-    a++;
-    jump = a * b;
+	do
+	{
+		node = list;
+		a++;
+		jump = a * b;
 
-    while (list->next && list->jump < jump)
-      list = list->next;
+		while (list->next && list->jump < jump)
+			list = list->next;
 
-    if (list->next == NULL && jump != list->jump)
-      jump = list->jump;
+		if (list->next == NULL && jump != list->jump)
+			jump = list->jump;
 
-    printf("Value checked at jump [%d] = [%d]\n", (int)jump, list->n);
+		printf("Value checked at jump [%d] = [%d]\n", (int)jump, list->n);
 
-  } while (jump < size && list->next && list->n < value);
+	} while (jump < size && list->next && list->n < value);
 
-  printf("Value found between jumpes ");
-  printf("[%d] and [%d]\n", (int)node->jump, (int)list->jump);
+	printf("Value found between jumpes ");
+	printf("[%d] and [%d]\n", (int)node->jump, (int)list->jump);
 
-  for (; node && node->jump <= list->jump; node = node->next)
-  {
-    printf("Value checked at jump [%d] = [%d]\n", (int)node->jump, node->n);
-    if (node->n == value)
-      return (node);
-  }
+	for (; node && node->jump <= list->jump; node = node->next)
+	{
+		printf("Value checked at jump [%d] = [%d]\n", (int)node->jump, node->n);
+		if (node->n == value)
+			return (node);
+	}
 
-  return (NULL);
+	return (NULL);
 }

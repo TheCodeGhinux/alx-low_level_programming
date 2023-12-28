@@ -22,42 +22,42 @@
  */
 int interpolation_search(int *array, size_t size, int value)
 {
-  size_t a, b, c;
-  double f;
+	size_t a, b, c;
+	double f;
 
-  if (array == NULL)
-    return (-1);
+	if (array == NULL)
+		return (-1);
 
-  b = 0;
-  c = size - 1;
+	b = 0;
+	c = size - 1;
 
-  while (size)
-  {
-    f = (double)(c - b) / (array[c] - array[b]) * (value - array[b]);
-    a = (size_t)(b + f);
-    printf("Value checked array[%d]", (int)a);
+	while (size)
+	{
+		f = (double)(c - b) / (array[c] - array[b]) * (value - array[b]);
+		a = (size_t)(b + f);
+		printf("Value checked array[%d]", (int)a);
 
-    if (a >= size)
-    {
-      printf(" is out of range\n");
-      break;
-    }
-    else
-    {
-      printf(" = [%d]\n", array[a]);
-    }
+		if (a >= size)
+		{
+			printf(" is out of range\n");
+			break;
+		}
+		else
+		{
+			printf(" = [%d]\n", array[a]);
+		}
 
-    if (array[a] == value)
-      return ((int)a);
+		if (array[a] == value)
+			return ((int)a);
 
-    if (array[a] < value)
-      b = a + 1;
-    else
-      c = a - 1;
+		if (array[a] < value)
+			b = a + 1;
+		else
+			c = a - 1;
 
-    if (b == c)
-      break;
-  }
+		if (b == c)
+			break;
+	}
 
-  return (-1);
+	return (-1);
 }
