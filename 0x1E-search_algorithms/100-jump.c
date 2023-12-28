@@ -4,16 +4,6 @@
 /**
  * jump_search - searches for a value in an array of
  * integers using the Jump search algorithm
- *
- * @array: input array
- * @size: size of the array
- * @value: value to search in
- * Return: jump of the number
- */
-
-/**
- * jump_search - Searches for a value in a sorted array
- *               of integers using jump search.
  * @array: A pointer to the first element of the array to search.
  * @size: The number of elements in the array.
  * @value: The value to search for.
