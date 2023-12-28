@@ -27,9 +27,9 @@ int jump_search(int *array, size_t size, int value)
 
 		if (array[jump] == value)
 			return (jump);
-		k++;
+		b++;
 		prev = jump;
-		jump = a * b;
+		jump = b * a;
 	} while (jump < (int)size && array[jump] < value);
 
 	printf("Value %d found at index %d\n", prev, jump);
